@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://youth.cpalss.com/sitemap.xml
