@@ -150,14 +150,14 @@
             "highlight": {
               "label": "Youth Culture Day",
               "bands": ["hs"],
-              "text": "Sunday stage lane for EGUSD cultural clubs (advisor sign-off) — dance and culture sets, not college performers."
+              "text": "Sunday stage for EGUSD cultural clubs (advisor sign-off) — dance and culture sets. Enroll your club to perform; not a college performer lane."
             },
             "url": "https://eglny.com",
             "urlLabel": "eglny.com",
             "plugIn": [
               { "kind": "Attend", "text": "Free both days — eglny.com" },
-              { "kind": "Enroll", "text": "Vendor, performer, or school/club activation — eglny.com or contact@cpalss.com" },
-              { "kind": "Volunteer", "text": "Season roles or day-of — contact@cpalss.com (subject: LNY)" },
+              { "kind": "Enroll", "text": "Youth Culture Day — HS club stage set (advisor sign-off) — eglny.com or contact@cpalss.com (subject: YCD)" },
+              { "kind": "Volunteer", "text": "Logistics volunteering — season directors or day-of ops (setup, guest flow, zones) — contact@cpalss.com (subject: LNY volunteer)" },
               { "kind": "Sponsor", "text": "Fund The Festival — eglny.com/fund-the-festival/" }
             ]
           },
