@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Viet Youth Resources — Greater Sacramento</title>
-  <meta name="description" content="Local map of Vietnamese student clubs and youth opportunities in Greater Sacramento — high school and college. Peer Instagrams plus cPALSs and NorCal UVSA programs." />
+  <meta name="description" content="For Vietnamese American students and Viet clubs in Greater Sacramento — club Instagrams, free events, culture nights, and more." />
   <link rel="canonical" href="https://youth.cpalss.com/" />
   <meta property="og:title" content="Viet Youth Resources" />
-  <meta property="og:description" content="Know your peers. Know what's on the calendar — VSAs and youth opportunities across Greater Sacramento." />
+  <meta property="og:description" content="For Vietnamese American students and Viet clubs — find clubs nearby and cool things to do." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://youth.cpalss.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Viet Youth Resources" />
-  <meta name="twitter:description" content="Peer map and opportunities for Vietnamese high school and college youth in Greater Sacramento." />
+  <meta name="twitter:description" content="For Vietnamese American students and Viet clubs — find clubs nearby and cool things to do." />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,10 +49,10 @@
       <span class="nav-toggle-bars" aria-hidden="true"></span>
     </button>
     <nav class="site-nav" id="site-nav" aria-label="Page">
-      <a href="#peers">Peer map</a>
-      <a href="#opportunities">Opportunities</a>
-      <a href="#coming">More coming</a>
-      <a href="#contact">Contact</a>
+      <a href="#who">Who’s who</a>
+      <a href="#events">Events</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Questions</a>
     </nav>
   </header>
 
@@ -71,34 +71,35 @@
     <div class="doc-layout">
       <nav class="toc" aria-label="On this page">
         <p class="toc-label">On this page</p>
-        <a class="toc-link" href="#intro" data-toc-target="intro">What this is</a>
-        <a class="toc-link" href="#peers" data-toc-target="peers">Peer map</a>
-        <a class="toc-link" href="#opportunities" data-toc-target="opportunities">Opportunities</a>
+        <a class="toc-link" href="#who" data-toc-target="who">Who’s who</a>
+        <a class="toc-link" href="#events" data-toc-target="events">Events & projects</a>
+        <a class="toc-link" href="#resources" data-toc-target="resources">Resources</a>
         <a class="toc-link" href="#coming" data-toc-target="coming">More coming</a>
-        <a class="toc-link" href="#contact" data-toc-target="contact">Contact</a>
+        <a class="toc-link" href="#contact" data-toc-target="contact">Questions?</a>
       </nav>
 
       <div class="doc-main">
-        <section class="section" id="intro" data-doc-section aria-labelledby="intro-title">
-          <div class="section-inner">
-            <h2 id="intro-title"></h2>
-            <p class="section-lead" id="intro-body"></p>
+        <section class="section" id="who" data-doc-section aria-labelledby="who-title">
+          <div class="section-inner section-inner-wide">
+            <h2 id="who-title"></h2>
+            <p class="section-lead" id="who-lead"></p>
+            <div id="who-bands"></div>
           </div>
         </section>
 
-        <section class="section" id="peers" data-doc-section aria-labelledby="peers-title">
-          <div class="section-inner">
-            <h2 id="peers-title"></h2>
-            <p class="section-lead" id="peers-lead"></p>
-            <div id="peers-bands"></div>
+        <section class="section" id="events" data-doc-section aria-labelledby="events-title">
+          <div class="section-inner section-inner-wide">
+            <h2 id="events-title"></h2>
+            <p class="section-lead" id="events-lead"></p>
+            <div id="events-list"></div>
           </div>
         </section>
 
-        <section class="section" id="opportunities" data-doc-section aria-labelledby="opps-title">
-          <div class="section-inner">
-            <h2 id="opps-title"></h2>
-            <p class="section-lead" id="opps-lead"></p>
-            <div id="opps-groups"></div>
+        <section class="section" id="resources" data-doc-section aria-labelledby="resources-title">
+          <div class="section-inner section-inner-wide">
+            <h2 id="resources-title"></h2>
+            <p class="section-lead" id="resources-lead"></p>
+            <div id="resources-list"></div>
           </div>
         </section>
 
@@ -123,8 +124,23 @@
   <footer class="site-footer">
     <p><strong>Viet Youth Resources</strong> — published by <a href="https://www.cpalss.com" rel="noopener noreferrer">cPALSs</a></p>
     <p><a href="mailto:contact@cpalss.com">contact@cpalss.com</a></p>
-    <p class="footer-note">Peer map and opportunity listings only — not membership, and not a high school alliance.</p>
+    <p class="footer-note">For Vietnamese American students and Viet clubs in Greater Sacramento.</p>
   </footer>
+
+  <div
+    class="band-fab"
+    id="band-fab"
+    hidden
+    role="group"
+    aria-label="Filter by high school or college"
+  >
+    <button type="button" class="band-fab-btn" data-band="hs" aria-pressed="false">
+      High school
+    </button>
+    <button type="button" class="band-fab-btn" data-band="college" aria-pressed="false">
+      College
+    </button>
+  </div>
 
   <script src="site.js" defer></script>
 </body>

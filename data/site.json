@@ -10,77 +10,38 @@
     "url": "https://www.cpalss.com"
   },
   "hero": {
-    "kicker": "Greater Sacramento · HS & college",
-    "headline": "Know your peers. Know what's on the calendar.",
-    "body": "A local map of Vietnamese student clubs and the opportunities vying for your attention — so every chapter sees the field.",
-    "ctaPrimary": { "label": "Peer map", "href": "#peers" },
-    "ctaSecondary": { "label": "Opportunities", "href": "#opportunities" }
-  },
-  "intro": {
-    "headline": "What this is",
-    "body": "For VSA and Viet culture club officers and members in Greater Sacramento. Peer Instagrams plus ways to plug into free community and regional youth programs. This is not membership in cPALSs — and not a new high school alliance."
+    "kicker": "Greater Sacramento · high school & college",
+    "headline": "Find other clubs. Find cool things to do.",
+    "body": "For Vietnamese American students — and for VSAs and other Viet culture clubs. Who’s who nearby, events you can attend, perform at, or volunteer for — plus resources like scholarships.",
+    "ctaPrimary": { "label": "Who’s who", "href": "#who" },
+    "ctaSecondary": { "label": "Events", "href": "#events" }
   },
   "chapters": {
-    "headline": "Peer map",
-    "lead": "Local chapters and culture clubs. Follow each other. Cross-invite. Know who else is recruiting and performing this year.",
+    "headline": "Who’s who",
+    "lead": "VSAs and other Vietnamese clubs at schools nearby — plus a few campus performance teams. Follow them, go to a meeting, invite each other to culture nights.",
     "bands": [
       {
         "id": "hs",
         "label": "High school",
-        "note": "EGUSD Vietnamese Student Associations and culture clubs",
+        "note": "Vietnamese clubs in Elk Grove Unified (EGUSD) and Sacramento City Unified (SCUSD)",
         "orgs": [
-          {
-            "name": "Cosumnes Oaks VSA",
-            "school": "Cosumnes Oaks High School",
-            "instagram": "cohs.vsa"
-          },
-          {
-            "name": "Elk Grove HS VSA",
-            "school": "Elk Grove High School",
-            "instagram": "vsa.eghs"
-          },
-          {
-            "name": "Florin VSA",
-            "school": "Florin High School",
-            "instagram": "florinvsa"
-          },
-          {
-            "name": "Franklin HS VSA",
-            "school": "Franklin High School",
-            "instagram": "frhsvsa"
-          },
-          {
-            "name": "Laguna Creek Viet Culture Club",
-            "school": "Laguna Creek High School",
-            "instagram": "lchs_viets"
-          },
-          {
-            "name": "Monterey Trail VSA",
-            "school": "Monterey Trail High School",
-            "instagram": "mthsvsa"
-          },
-          {
-            "name": "Pleasant Grove VSA",
-            "school": "Pleasant Grove High School",
-            "instagram": "pghsvsa"
-          },
-          {
-            "name": "Sheldon VSA",
-            "school": "Sheldon High School",
-            "instagram": "sheldonvsa"
-          }
+          { "name": "Cosumnes Oaks VSA", "school": "Cosumnes Oaks High School", "instagram": "cohs.vsa" },
+          { "name": "Elk Grove HS VSA", "school": "Elk Grove High School", "instagram": "vsa.eghs" },
+          { "name": "Florin VSA", "school": "Florin High School", "instagram": "florinvsa" },
+          { "name": "Franklin HS VSA", "school": "Franklin High School", "instagram": "frhsvsa" },
+          { "name": "Laguna Creek Viet Culture Club", "school": "Laguna Creek High School", "instagram": "lchs_viets" },
+          { "name": "Monterey Trail VSA", "school": "Monterey Trail High School", "instagram": "mthsvsa" },
+          { "name": "Pleasant Grove VSA", "school": "Pleasant Grove High School", "instagram": "pghsvsa" },
+          { "name": "Sheldon VSA", "school": "Sheldon High School", "instagram": "sheldonvsa" },
+          { "name": "West Campus Viet Culture Club", "school": "West Campus High School", "instagram": "wchsvietculture" }
         ]
       },
       {
         "id": "college",
         "label": "College",
-        "note": "Greater Sacramento campus chapters",
+        "note": "Campus clubs in Greater Sacramento",
         "orgs": [
-          {
-            "name": "Sac State VSA",
-            "school": "California State University, Sacramento",
-            "instagram": "sacstate.vsa"
-          },
+          { "name": "Sac State VSA", "school": "California State University, Sacramento", "instagram": "sacstate.vsa" },
           {
             "name": "UC Davis VSA",
             "school": "University of California, Davis",
@@ -91,145 +52,294 @@
         "adjacent": [
           {
             "name": "Red Lotus",
-            "note": "Sac State dance / lion — campus-adjacent, not the VSA board",
+            "note": "Sac State dance / lion dance (campus performance team, next to the VSA)",
             "instagram": "redlotus.official"
           },
           {
-            "name": "VISTA @ UCD",
-            "note": "UC Davis VSA high school outreach — college students mentoring / bridging HS clubs",
-            "instagram": "vista.vsaatucd"
+            "name": "Blooming Lotus",
+            "note": "UC Davis lion dance team (like Red Lotus at Sac State)",
+            "instagram": "bloominglotusatucd"
           }
         ]
       }
     ]
   },
-  "opportunities": {
-    "headline": "Opportunities",
-    "lead": "Programs that want your club's calendar — attend, enroll, volunteer, or sponsor. Owned by different orgs; listed here so you see the whole field.",
-    "groups": [
+  "events": {
+    "headline": "Events & projects",
+    "lead": "One card per event. Inside each card: attend as a guest, perform or compete, and/or volunteer — whichever lanes are open. Closest next is listed first.",
+    "items": [
       {
-        "id": "cpalss",
-        "org": "cPALSs",
-        "orgUrl": "https://www.cpalss.com",
-        "items": [
+        "id": "camp-horizon",
+        "name": "Camp Horizon",
+        "org": "NorCal UVSA",
+        "orgUrl": "https://norcaluvsa.org",
+        "date": "2026-08-14",
+        "dateEnd": "2026-08-16",
+        "when": "Fri–Sun Aug 14–16, 2026 · D.L. Bliss State Park (Tahoe)",
+        "bands": ["college"],
+        "about": "A summer camping retreat for college VSA students — team activities and friends from other schools.",
+        "url": "https://forms.gle/NdLE9EeMS9FXrHVQ9",
+        "urlLabel": "Camp Horizon late registration",
+        "actions": [
           {
-            "id": "lsk",
-            "name": "Little Saigon Krewe",
-            "when": "Sat Oct 24, 2026 · Golden Harvest Parade · Capitol Mall",
-            "bands": ["hs", "college"],
-            "about": "A composite Vietnamese community block in Sacramento's civic parade — clubs, troupes, and courts march together under one krewe.",
-            "url": "https://krewe.cpalss.com",
-            "urlLabel": "krewe.cpalss.com",
-            "plugIn": [
-              { "kind": "Attend", "text": "Watch on Capitol Mall; bring family" },
-              { "kind": "Enroll", "text": "Register your club as a subunit — krewe.cpalss.com" },
-              { "kind": "Volunteer", "text": "Help build and run the block — contact@cpalss.com (subject: Krewe)" },
-              { "kind": "Sponsor", "text": "Cash or in-kind — same inbox" }
-            ]
-          },
-          {
-            "id": "toy-drive",
-            "name": "Elk Grove Toy Drive",
-            "when": "Sun Dec 6, 2026 · 3:30–7:30 PM (tentative) · District 56 · 10th annual",
-            "bands": ["hs", "college"],
-            "about": "A free family evening — Santa, dinner, crafts, entertainment — while unwrapped toys go to local charities. Sponsors fund the fete; volunteers make the magic.",
-            "url": "https://elkgrovetoydrive.com",
-            "urlLabel": "elkgrovetoydrive.com",
-            "plugIn": [
-              { "kind": "Attend", "text": "Free guest — elkgrovetoydrive.com" },
-              { "kind": "Volunteer", "text": "Staff / directors or day-of shifts — contact@cpalss.com" },
-              { "kind": "Sponsor", "text": "Cash or in-kind — elkgrovetoydrive.com/fund-the-fete/" }
-            ]
-          },
-          {
-            "id": "lny",
-            "name": "Elk Grove Lunar New Year",
-            "when": "Sat–Sun Feb 13–14, 2027 · Elk Grove Park · free admission",
-            "bands": ["hs", "college"],
-            "about": "A free family festival weekend for Tết — carnival, lion dance, kids programming, local music — co-hosted with coalition partners.",
-            "highlight": {
-              "label": "Youth Culture Day",
-              "bands": ["hs"],
-              "text": "Sunday stage for EGUSD cultural clubs (advisor sign-off) — dance and culture sets. Enroll your club to perform; not a college performer lane."
-            },
-            "url": "https://eglny.com",
-            "urlLabel": "eglny.com",
-            "plugIn": [
-              { "kind": "Attend", "text": "Free both days — eglny.com" },
-              { "kind": "Enroll", "text": "Youth Culture Day — HS club stage set (advisor sign-off) — eglny.com or contact@cpalss.com (subject: YCD)" },
-              { "kind": "Volunteer", "text": "Logistics volunteering — season directors or day-of ops (setup, guest flow, zones) — contact@cpalss.com (subject: LNY volunteer)" },
-              { "kind": "Sponsor", "text": "Fund The Festival — eglny.com/fund-the-festival/" }
-            ]
-          },
-          {
-            "id": "mv-norcal",
-            "name": "Miss & Miss Teen Vietnam Northern California",
-            "when": "Next pageant date TBA (2027 hosting not locked)",
-            "bands": ["hs", "college"],
-            "about": "Empowers young Vietnamese American women through pageantry, leadership, and community appearances — including festival and parade moments with cPALSs.",
-            "instagram": "missvietnamnorcal",
-            "url": "https://www.instagram.com/missvietnamnorcal/",
-            "urlLabel": "@missvietnamnorcal",
-            "plugIn": [
-              { "kind": "Attend", "text": "Pageant night and court appearances (watch for announcement)" },
-              { "kind": "Enroll", "text": "Compete as a candidate, or invite the court to your event — contact@cpalss.com (subject: MV NORCAL)" },
-              { "kind": "Volunteer", "text": "Pageant production and appearance support — same inbox" },
-              { "kind": "Sponsor", "text": "Cash or in-kind for pageant and court — same inbox" }
-            ]
+            "type": "attend",
+            "detail": "Fill out [Late registration form](https://forms.gle/NdLE9EeMS9FXrHVQ9) — or ask your VSA"
           }
         ]
       },
       {
-        "id": "norcal-uvsa",
+        "id": "krewe",
+        "name": "Little Saigon Krewe @ Golden Harvest",
+        "org": "cPALSs",
+        "orgUrl": "https://www.cpalss.com",
+        "date": "2026-10-24",
+        "when": "Sat Oct 24, 2026 · Capitol Mall (downtown Sacramento)",
+        "bands": ["hs", "college"],
+        "about": "Sacramento’s big fall parade — Vietnamese clubs and friends march together as one krewe (a parade crew).",
+        "url": "https://krewe.cpalss.com",
+        "urlLabel": "krewe.cpalss.com",
+        "actions": [
+          {
+            "type": "attend",
+            "detail": "Watch on Capitol Mall — bring family — krewe.cpalss.com"
+          },
+          {
+            "type": "perform",
+            "detail": "Register your club, dance team, or lion crew to march in the krewe block — krewe.cpalss.com or krewe@cpalss.com"
+          },
+          {
+            "type": "volunteer",
+            "detail": "Help set up or run the krewe block the morning of the parade — krewe@cpalss.com"
+          }
+        ]
+      },
+      {
+        "id": "toy-drive",
+        "name": "Elk Grove Toy Drive",
+        "org": "cPALSs",
+        "orgUrl": "https://www.cpalss.com",
+        "date": "2026-12-06",
+        "when": "Sun Dec 6, 2026 · 3:30–7:30 PM (date may shift) · District 56 · 10th year",
+        "bands": ["hs", "college"],
+        "about": "A free night for families — Santa, dinner, crafts, and shows. Unwrapped toys go to kids who need them.",
+        "url": "https://elkgrovetoydrive.com",
+        "urlLabel": "elkgrovetoydrive.com",
+        "actions": [
+          {
+            "type": "attend",
+            "detail": "Come as a guest — free — elkgrovetoydrive.com"
+          },
+          {
+            "type": "volunteer",
+            "detail": "Volunteer the day of or help plan earlier — contact@elkgrovetoydrive.com"
+          }
+        ]
+      },
+      {
+        "id": "vista",
+        "name": "VISTA Summit @ UC Davis",
+        "org": "UC Davis VSA",
+        "date": "2027-01-24",
+        "dateEnd": "2027-01-25",
+        "when": "2-day winter summit (often late January)",
+        "bands": ["hs"],
+        "about": "A high school summit on the UC Davis campus — workshops and college path stuff for Vietnamese American students. Run by UC Davis VSA (with partners on campus).",
+        "instagram": "vista.vsaatucd",
+        "url": "https://www.instagram.com/vista.vsaatucd/",
+        "urlLabel": "@vista.vsaatucd",
+        "actions": [
+          {
+            "type": "attend",
+            "detail": "Follow @vista.vsaatucd for signup links and webinar dates"
+          }
+        ]
+      },
+      {
+        "id": "lny",
+        "name": "Elk Grove Lunar New Year Tết",
+        "org": "cPALSs",
+        "orgUrl": "https://www.cpalss.com",
+        "date": "2027-02-13",
+        "dateEnd": "2027-02-14",
+        "when": "Sat–Sun Feb 13–14, 2027 · Elk Grove Park · free",
+        "bands": ["hs", "college"],
+        "about": "A free Tết weekend — carnival rides, lion dance, kids stuff, and music. Great place to hang with family and friends.",
+        "url": "https://eglny.com",
+        "urlLabel": "eglny.com",
+        "actions": [
+          {
+            "type": "attend",
+            "detail": "Come both days — free — eglny.com"
+          },
+          {
+            "type": "perform",
+            "detail": "Youth Culture Day — culture clubs (advisor OK required) for dance or culture sets. Ask an officer + your advisor — eglny.com or contact@eglny.com",
+            "subject": "Youth Culture Day"
+          },
+          {
+            "type": "volunteer",
+            "detail": "Help run the festival — setup, directing guests, staffing a zone — contact@eglny.com",
+            "subject": "Lunar New Year Tết volunteer"
+          }
+        ]
+      },
+      {
+        "id": "summit",
+        "name": "NorCal UVSA Summit",
         "org": "NorCal UVSA",
         "orgUrl": "https://norcaluvsa.org",
-        "instagram": "norcaluvsa",
-        "note": "United Vietnamese Student Associations of Northern California — regional collegiate union. cPALSs lists these so Sac chapters see them; UVSA runs them.",
-        "items": [
+        "when": "Once a year (3 days / 2 nights on a member campus)",
+        "bands": ["college"],
+        "about": "A weekend leadership conference for college VSAs — workshops, bonding, and service. Member schools take turns hosting.",
+        "url": "https://norcaluvsa.org/summit",
+        "urlLabel": "norcaluvsa.org/summit",
+        "actions": [
           {
-            "id": "summit",
-            "name": "Summit",
-            "when": "Annual regional convention — dates on norcaluvsa.org",
-            "bands": ["college"],
-            "about": "Regional convention for member-school VSAs — staff or attend. Strong chapters staff; thinner chapters get turnkey programming without inventing the event.",
-            "url": "https://norcaluvsa.org",
-            "urlLabel": "norcaluvsa.org",
-            "plugIn": [
-              { "kind": "Attend", "text": "Register when Summit opens — norcaluvsa.org / @norcaluvsa" },
-              { "kind": "Enroll", "text": "Staff or send your chapter — member-school pathway via your VSA board / ICC" }
-            ]
-          },
-          {
-            "id": "camp-horizon",
-            "name": "Camp Horizon",
-            "when": "Summer camp (typically August) — dates on norcaluvsa.org",
-            "bands": ["college"],
-            "about": "Summer camp with registration and family-leader programming — a membership activity for NorCal UVSA chapters.",
-            "url": "https://norcaluvsa.org",
-            "urlLabel": "norcaluvsa.org",
-            "plugIn": [
-              { "kind": "Attend", "text": "Camp registration when posted — norcaluvsa.org / @norcaluvsa" },
-              { "kind": "Enroll", "text": "Chapter and individual paths via UVSA — watch IG and the union site" }
-            ]
-          },
-          {
-            "id": "sparks",
-            "name": "SPARKS",
-            "when": "One-day High School Summit — typically May (also ran Nov 2025); dates on norcaluvsa.org",
-            "bands": ["hs"],
-            "about": "NorCal UVSA's high school college/career bridge — workshops and networking with college students. Not a high school federation; a day to meet the collegiate field.",
-            "url": "https://norcaluvsa.org",
-            "urlLabel": "norcaluvsa.org",
-            "plugIn": [
-              { "kind": "Attend", "text": "Register when SPARKS opens — norcaluvsa.org / @norcaluvsa" },
-              { "kind": "Enroll", "text": "Bring your HS club — watch UVSA IG for announcements" }
-            ]
+            "type": "attend",
+            "detail": "Register when signup opens — norcaluvsa.org/summit or ask your VSA board"
           }
-        ],
-        "also": [
+        ]
+      },
+      {
+        "id": "mv",
+        "name": "Miss & Miss Teen Vietnam Northern California",
+        "org": "Miss & Miss Teen Vietnam Northern California",
+        "when": "Next pageant date TBA (watch Instagram)",
+        "bands": ["hs", "college"],
+        "about": "A pageant and leadership program for young Vietnamese American women. Watch the show, compete, or help behind the scenes.",
+        "instagram": "missvietnamnorcal",
+        "url": "https://www.instagram.com/missvietnamnorcal/",
+        "urlLabel": "@missvietnamnorcal",
+        "actions": [
           {
-            "name": "UVSA Olympics",
-            "text": "Inter-chapter competition (typically February)."
+            "type": "attend",
+            "detail": "Watch for pageant night and appearance posts — @missvietnamnorcal"
+          },
+          {
+            "type": "perform",
+            "label": "Compete",
+            "detail": "DM @missvietnamnorcal"
+          },
+          {
+            "type": "perform",
+            "label": "Invite the court",
+            "detail": "DM @missvietnamnorcal"
+          },
+          {
+            "type": "volunteer",
+            "detail": "DM @missvietnamnorcal"
+          }
+        ]
+      },
+      {
+        "id": "florin-vcn",
+        "name": "Florin Vietnamese Culture Night",
+        "org": "Florin High School VSA",
+        "date": "2027-03-13",
+        "when": "Around March 2027 (expected)",
+        "bands": ["hs"],
+        "about": "Florin’s culture show. Expect next is a guess — follow Instagram for tickets and the real date.",
+        "instagram": "florinvsa",
+        "url": "https://www.instagram.com/florinvsa/",
+        "urlLabel": "@florinvsa",
+        "actions": [
+          {
+            "type": "attend",
+            "detail": "Buy tickets when they post — @florinvsa"
+          },
+          {
+            "type": "perform",
+            "detail": "Guest-perform if they invite other schools — ask your officers to reach out"
+          }
+        ]
+      },
+      {
+        "id": "ucd-culture-show",
+        "name": "UC Davis VSA Culture Show",
+        "org": "UC Davis VSA",
+        "date": "2027-04-03",
+        "dateEnd": "2027-04-04",
+        "when": "Around April 2027 (expected)",
+        "bands": ["college"],
+        "about": "UC Davis VSA’s annual culture show. Expect next is a guess — follow @ucdvsacultureshow for tickets.",
+        "instagram": "ucdvsacultureshow",
+        "url": "https://www.instagram.com/ucdvsacultureshow/",
+        "urlLabel": "@ucdvsacultureshow",
+        "actions": [
+          {
+            "type": "attend",
+            "detail": "Watch for ticket posts — @ucdvsacultureshow"
+          },
+          {
+            "type": "perform",
+            "detail": "Guest-perform if invited — ask your officers"
+          }
+        ]
+      },
+      {
+        "id": "sheldon-vcn",
+        "name": "Sheldon Vietnamese Culture Night",
+        "org": "Sheldon High School VSA",
+        "date": "2027-04-15",
+        "when": "Around April 2027 (expected)",
+        "bands": ["hs"],
+        "about": "Sheldon’s culture show. Expect next is a guess — follow Instagram for tickets and the real date.",
+        "instagram": "sheldonvsa",
+        "url": "https://www.instagram.com/sheldonvsa/",
+        "urlLabel": "@sheldonvsa",
+        "actions": [
+          {
+            "type": "attend",
+            "detail": "Buy tickets when they post — @sheldonvsa"
+          },
+          {
+            "type": "perform",
+            "detail": "Guest-perform if they invite other schools — ask your officers to reach out"
+          }
+        ]
+      },
+      {
+        "id": "mths-vcn",
+        "name": "Monterey Trail Vietnamese Culture Night",
+        "org": "Monterey Trail High School VSA",
+        "date": "2027-05-15",
+        "when": "Around May 2027 (expected)",
+        "bands": ["hs"],
+        "about": "Monterey Trail’s culture show. Expect next is a guess — follow Instagram for tickets and the real date.",
+        "instagram": "mthsvsa",
+        "url": "https://www.instagram.com/mthsvsa/",
+        "urlLabel": "@mthsvsa",
+        "actions": [
+          {
+            "type": "attend",
+            "detail": "Buy tickets when they post — @mthsvsa"
+          },
+          {
+            "type": "perform",
+            "detail": "Guest-perform if they invite other schools — ask your officers to reach out"
+          }
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "headline": "Resources",
+    "lead": "Scholarships and other support that help your school path.",
+    "items": [
+      {
+        "id": "tu-ai-scholarships",
+        "name": "Vietnamese American Scholastic Achievement Awards",
+        "org": "Tu-Ai Connect-To-Serve",
+        "orgUrl": "https://tuaiconnect.com/",
+        "when": "Application window each school year — check tuaiconnect.com",
+        "bands": ["hs", "college"],
+        "about": "Scholarships and special awards for Vietnamese American students. Browse the site for which awards are open.",
+        "url": "https://tuaiconnect.com/",
+        "urlLabel": "tuaiconnect.com",
+        "actions": [
+          {
+            "type": "apply",
+            "detail": "Apply on tuaiconnect.com when the form is open (ask a teacher or counselor if you need help)"
           }
         ]
       }
@@ -237,11 +347,11 @@
   },
   "coming": {
     "headline": "More coming",
-    "body": "Partner programs — including Lạc Hồng (Vietnamese language school) and other youth-facing orgs — will be listed here so chapters see the full field. Watch this page for updates."
+    "body": "We’ll add more here — like Lạc Hồng (Vietnamese language school on weekends) and other groups students care about. Check back later in the year."
   },
   "contact": {
-    "headline": "Stay current",
-    "body": "Questions, corrections, or a club we should add? Email us. Season dates change — refresh this page when programs announce.",
+    "headline": "Questions?",
+    "body": "Something wrong, missing, or confusing? Email us. Dates can change — your club Instagram and these event sites are the place to double-check.",
     "email": "contact@cpalss.com"
   }
 }

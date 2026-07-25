@@ -1,5 +1,12 @@
 (() => {
   const BAND_LABEL = { hs: "High school", college: "College" };
+  const ACTION_LABEL = {
+    attend: "Attend",
+    perform: "Perform",
+    volunteer: "Volunteer",
+    apply: "Apply",
+  };
+  const ACTION_ORDER = ["attend", "perform", "volunteer", "apply"];
 
   async function loadJson(path) {
     const res = await fetch(path);
@@ -37,6 +44,162 @@
       .join("")}</span>`;
   }
 
+  function orgLine(item) {
+    if (!item.org) return "";
+    if (item.orgUrl) {
+      return `<p class="activity-org"><a href="${escapeHtml(item.orgUrl)}" rel="noopener noreferrer">${escapeHtml(item.org)}</a></p>`;
+    }
+    return `<p class="activity-org">${escapeHtml(item.org)}</p>`;
+  }
+
+  /** Local calendar day from YYYY-MM-DD (avoids UTC shift). */
+  function parseDay(iso) {
+    if (!iso || typeof iso !== "string") return null;
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso.trim());
+    if (!m) return null;
+    return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  }
+
+  function todayStart() {
+    const n = new Date();
+    return new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  }
+
+  function itemEndDay(item) {
+    return parseDay(item.dateEnd || item.date);
+  }
+
+  function itemStartMs(item) {
+    const d = parseDay(item.date);
+    return d ? d.getTime() : Number.POSITIVE_INFINITY;
+  }
+
+  function isPastItem(item, today) {
+    const end = itemEndDay(item);
+    if (!end) return false;
+    return end < today;
+  }
+
+  /**
+   * Upcoming by date (soonest first); undated after dated upcoming;
+   * past items rotated to the end (soonest-past first among past).
+   */
+  function sortByTimeline(items) {
+    if (!items || !items.length) return [];
+    const today = todayStart();
+    const tagged = items.map((item, index) => ({ item, index, past: isPastItem(item, today) }));
+    const cmp = (a, b) => {
+      const da = itemStartMs(a.item);
+      const db = itemStartMs(b.item);
+      if (da !== db) return da - db;
+      return a.index - b.index;
+    };
+    const upcoming = tagged.filter((t) => !t.past).sort(cmp);
+    const past = tagged.filter((t) => t.past).sort(cmp);
+    return [...upcoming, ...past].map((t) => t.item);
+  }
+
+  function sortedActions(actions) {
+    if (!actions || !actions.length) return [];
+    return [...actions].sort((a, b) => {
+      const ia = ACTION_ORDER.indexOf(a.type);
+      const ib = ACTION_ORDER.indexOf(b.type);
+      const sa = ia === -1 ? 99 : ia;
+      const sb = ib === -1 ? 99 : ib;
+      return sa - sb;
+    });
+  }
+
+  function mailtoHref(email, subject) {
+    let href = `mailto:${email}`;
+    if (subject) href += `?subject=${encodeURIComponent(subject)}`;
+    return href;
+  }
+
+  /** Link [label](url) markdown, emails (mailto + optional action.subject), bare domains, and @handles. */
+  function formatActionDetail(act) {
+    const subject = act.subject || "";
+    const raw = String(act.detail || "");
+    const tokenRe =
+      /\[([^\]]+)\]\((https?:\/\/[^\s)]+|forms\.gle\/[^\s)]+|[\w.-]+\.[a-z]{2,}(?:\/[^\s)]*)?)\)|\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})\b/g;
+    const chunks = [];
+    let last = 0;
+    let match;
+    while ((match = tokenRe.exec(raw)) !== null) {
+      if (match.index > last) {
+        chunks.push({ type: "text", value: raw.slice(last, match.index) });
+      }
+      if (match[1] != null) {
+        let href = match[2];
+        if (!/^https?:\/\//i.test(href)) href = `https://${href}`;
+        chunks.push({ type: "md", label: match[1], href });
+      } else {
+        chunks.push({ type: "email", value: match[3] });
+      }
+      last = match.index + match[0].length;
+    }
+    if (last < raw.length) chunks.push({ type: "text", value: raw.slice(last) });
+
+    return chunks
+      .map((chunk) => {
+        if (chunk.type === "md") {
+          return `<a href="${escapeHtml(chunk.href)}" rel="noopener noreferrer">${escapeHtml(chunk.label)}</a>`;
+        }
+        if (chunk.type === "email") {
+          return `<a href="${escapeHtml(mailtoHref(chunk.value, subject))}">${escapeHtml(chunk.value)}</a>`;
+        }
+        return escapeHtml(chunk.value)
+          .replace(
+            /\b((?:https?:\/\/)?(?:[\w-]+\.)+(?:com|org|edu|net|ee|gle|me|io)(?:\/[\w./-]*)?)\b/gi,
+            (m) => {
+              const href = /^https?:\/\//i.test(m) ? m : `https://${m}`;
+              return `<a href="${escapeHtml(href)}" rel="noopener noreferrer">${escapeHtml(m)}</a>`;
+            }
+          )
+          .replace(/@([A-Za-z0-9._]+)/g, (_, handle) => {
+            return `<a href="${escapeHtml(igUrl(handle))}" rel="noopener noreferrer">@${escapeHtml(handle)}</a>`;
+          });
+      })
+      .join("");
+  }
+
+  function actionsBlock(item) {
+    const actions = sortedActions(item.actions);
+    if (!actions.length) {
+      if (item.action) {
+        return `<p class="activity-action"><span class="activity-action-label">Next step</span> ${escapeHtml(item.action)}</p>`;
+      }
+      return "";
+    }
+    return `<ul class="action-list">${actions
+      .map((act) => {
+        const label = act.label || ACTION_LABEL[act.type] || act.type;
+        return `<li class="action-row action-${escapeHtml(act.type || "other")}">
+          <span class="action-type">${escapeHtml(label)}</span>
+          <span class="action-detail">${formatActionDetail(act)}</span>
+        </li>`;
+      })
+      .join("")}</ul>`;
+  }
+
+  function renderActivityCards(items) {
+    return `<div class="activity-cards">${sortByTimeline(items)
+      .map((item) => {
+        const bands = (item.bands || []).join(" ");
+        return `<article class="activity-card${isPastItem(item, todayStart()) ? " is-past" : ""}" data-bands="${escapeHtml(bands)}">
+          <header class="activity-card-head">
+            ${bandPills(item.bands)}
+            <h3 class="activity-card-title">${escapeHtml(item.name)}</h3>
+          </header>
+          ${orgLine(item)}
+          ${item.when ? `<p class="activity-when">${escapeHtml(item.when)}</p>` : ""}
+          <p class="activity-about">${escapeHtml(item.about || "")}</p>
+          ${actionsBlock(item)}
+        </article>`;
+      })
+      .join("")}</div>`;
+  }
+
   function renderHero(site) {
     const h = site.hero;
     document.getElementById("hero-kicker").textContent = h.kicker;
@@ -50,17 +213,12 @@
     `;
   }
 
-  function renderIntro(site) {
-    document.getElementById("intro-title").textContent = site.intro.headline;
-    document.getElementById("intro-body").textContent = site.intro.body;
-  }
-
   function renderPeers(site) {
     const ch = site.chapters;
-    document.getElementById("peers-title").textContent = ch.headline;
-    document.getElementById("peers-lead").textContent = ch.lead;
+    document.getElementById("who-title").textContent = ch.headline;
+    document.getElementById("who-lead").textContent = ch.lead;
 
-    const root = document.getElementById("peers-bands");
+    const root = document.getElementById("who-bands");
     root.innerHTML = ch.bands
       .map((band) => {
         const rows = band.orgs
@@ -82,7 +240,7 @@
         let adjacent = "";
         if (band.adjacent && band.adjacent.length) {
           adjacent = `<div class="adjacent">
-            <h4 class="adjacent-title">Campus-adjacent</h4>
+            <h4 class="adjacent-title">Also on campus</h4>
             <ul class="adjacent-list">
               ${band.adjacent
                 .map((a) => {
@@ -96,7 +254,7 @@
           </div>`;
         }
 
-        return `<div class="band-block" id="peers-${escapeHtml(band.id)}">
+        return `<div class="band-block" id="who-${escapeHtml(band.id)}">
           <h3 class="band-heading">${escapeHtml(band.label)}</h3>
           ${band.note ? `<p class="band-note">${escapeHtml(band.note)}</p>` : ""}
           <div class="table-wrap">
@@ -113,79 +271,15 @@
       .join("");
   }
 
-  function renderOpportunities(site) {
-    const op = site.opportunities;
-    document.getElementById("opps-title").textContent = op.headline;
-    document.getElementById("opps-lead").textContent = op.lead;
-
-    const root = document.getElementById("opps-groups");
-    root.innerHTML = op.groups
-      .map((group) => {
-        const orgLink = group.orgUrl
-          ? `<a href="${escapeHtml(group.orgUrl)}" rel="noopener noreferrer">${escapeHtml(group.org)}</a>`
-          : escapeHtml(group.org);
-        const ig = group.instagram
-          ? ` · <a href="${igUrl(group.instagram)}" rel="noopener noreferrer">${igLabel(group.instagram)}</a>`
-          : "";
-        const note = group.note
-          ? `<p class="group-note">${escapeHtml(group.note)}</p>`
-          : "";
-
-        const items = group.items
-          .map((item) => {
-            const link = item.url
-              ? `<p class="opp-link"><a href="${escapeHtml(item.url)}" rel="noopener noreferrer">${escapeHtml(item.urlLabel || item.url)}</a></p>`
-              : "";
-            const highlight = item.highlight
-              ? `<div class="opp-highlight">
-                  <p class="opp-highlight-label">${escapeHtml(item.highlight.label)} ${bandPills(item.highlight.bands)}</p>
-                  <p>${escapeHtml(item.highlight.text)}</p>
-                </div>`
-              : "";
-            const plugs = (item.plugIn || [])
-              .map(
-                (p) =>
-                  `<li><span class="plug-kind">${escapeHtml(p.kind)}</span> ${escapeHtml(p.text)}</li>`
-              )
-              .join("");
-
-            return `<article class="opp-item">
-              <header class="opp-item-head">
-                <h4 class="opp-name">${escapeHtml(item.name)}</h4>
-                ${bandPills(item.bands)}
-              </header>
-              <p class="opp-when">${escapeHtml(item.when || "")}</p>
-              <p class="opp-about">${escapeHtml(item.about || "")}</p>
-              ${highlight}
-              ${link}
-              <ul class="plug-list">${plugs}</ul>
-            </article>`;
-          })
-          .join("");
-
-        const also =
-          group.also && group.also.length
-            ? `<div class="also-block">
-                <h4 class="also-title">Also from ${escapeHtml(group.org)}</h4>
-                <ul class="also-list">
-                  ${group.also
-                    .map(
-                      (a) =>
-                        `<li><strong>${escapeHtml(a.name)}</strong> — ${escapeHtml(a.text)}</li>`
-                    )
-                    .join("")}
-                </ul>
-              </div>`
-            : "";
-
-        return `<div class="opp-group" id="opps-${escapeHtml(group.id)}">
-          <h3 class="opp-org">${orgLink}${ig}</h3>
-          ${note}
-          <div class="opp-items">${items}</div>
-          ${also}
-        </div>`;
-      })
-      .join("");
+  function renderLane(sectionKey, site) {
+    const section = site[sectionKey];
+    if (!section) return;
+    const titleEl = document.getElementById(`${sectionKey}-title`);
+    const leadEl = document.getElementById(`${sectionKey}-lead`);
+    const listEl = document.getElementById(`${sectionKey}-list`);
+    if (titleEl) titleEl.textContent = section.headline;
+    if (leadEl) leadEl.textContent = section.lead;
+    if (listEl) listEl.innerHTML = renderActivityCards(section.items);
   }
 
   function renderComing(site) {
@@ -258,17 +352,81 @@
     sections.forEach((s) => io.observe(s));
   }
 
+  function initBandFab() {
+    const fab = document.getElementById("band-fab");
+    if (!fab) return;
+
+    let activeBand = null;
+    const buttons = [...fab.querySelectorAll("[data-band]")];
+    const filterRoots = ["#events-list", "#resources-list"]
+      .map((sel) => document.querySelector(sel))
+      .filter(Boolean);
+
+    function applyFilter() {
+      buttons.forEach((btn) => {
+        const on = btn.getAttribute("data-band") === activeBand;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-pressed", String(on));
+      });
+      filterRoots.forEach((root) => {
+        root.querySelectorAll(".activity-card[data-bands]").forEach((card) => {
+          if (!activeBand) {
+            card.hidden = false;
+            return;
+          }
+          const bands = (card.getAttribute("data-bands") || "").split(/\s+/).filter(Boolean);
+          card.hidden = !bands.includes(activeBand);
+        });
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const band = btn.getAttribute("data-band");
+        activeBand = activeBand === band ? null : band;
+        applyFilter();
+      });
+    });
+
+    const sectionIds = ["events", "resources"];
+    const inView = Object.fromEntries(sectionIds.map((id) => [id, false]));
+
+    function syncFabVisibility() {
+      const show = sectionIds.some((id) => inView[id]);
+      fab.hidden = !show;
+      fab.classList.toggle("is-visible", show);
+      document.body.classList.toggle("band-fab-open", show);
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          inView[entry.target.id] = entry.isIntersecting;
+        });
+        syncFabVisibility();
+      },
+      { rootMargin: "-12% 0px -12% 0px", threshold: [0, 0.08, 0.2] }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+
+    applyFilter();
+  }
+
   async function main() {
     initNav();
     const site = await loadJson("data/site.json");
     document.title = `${site.brand || site.title} — Greater Sacramento`;
     renderHero(site);
-    renderIntro(site);
     renderPeers(site);
-    renderOpportunities(site);
+    renderLane("events", site);
+    renderLane("resources", site);
     renderComing(site);
     renderContact(site);
     initTocSpy();
+    initBandFab();
   }
 
   main().catch((err) => {

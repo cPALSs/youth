@@ -3,7 +3,7 @@
 Live: [https://youth.cpalss.com](https://youth.cpalss.com)  
 Repo: [cPALSs/youth](https://github.com/cPALSs/youth)
 
-Static GitHub Pages site for Greater Sacramento Vietnamese **high school and college** youth — peer VSA Instagram map plus opportunities from cPALSs and NorCal UVSA (Summit, Camp Horizon, SPARKS).
+Static GitHub Pages site for Greater Sacramento Vietnamese **high school and college** youth — peer VSA Instagram map plus opportunities from cPALSs and NorCal UVSA (Summit, Camp Horizon).
 
 ## Edit / preview / publish
 
@@ -21,9 +21,9 @@ Push to `main` deploys via `.github/workflows/deploy-pages.yml`.
 
 | File | What to edit |
 |------|----------------|
-| `data/site.json` | Hero, peer chapters, opportunities, coming stub, contact |
+| `data/site.json` | Hero, who’s who, events (with `actions`: attend / perform / volunteer), resources, coming, contact. Use `date` / optional `dateEnd` (`YYYY-MM-DD`) — the page sorts soonest-first and rotates past dates to the end. Optional `subject` on an action is baked into mailto links for emails in that action’s `detail`. |
 
-CTAs are `mailto:contact@cpalss.com` only — no forms. Do not put officer names, advisor emails, or private sheet links in JSON.
+Program CTAs use the public inboxes (`contact@eglny.com`, `contact@elkgrovetoydrive.com`, `krewe@cpalss.com`, or `contact@cpalss.com`) — no forms. Do not put officer names, advisor emails, or private sheet links in JSON.
 
 ## DNS
 
