@@ -39,7 +39,7 @@
       {
         "id": "college",
         "label": "College",
-        "note": "Campus clubs in Greater Sacramento — plus NorCal UVSA (regional college VSA union)",
+        "note": "Campus clubs nearby (Sac / Davis / Stockton) — plus NorCal UVSA (regional college VSA union)",
         "orgs": [
           { "name": "Sac State VSA", "school": "California State University, Sacramento", "instagram": "sacstate.vsa" },
           {
@@ -47,6 +47,12 @@
             "school": "University of California, Davis",
             "instagram": "vsaatucd",
             "url": "https://vsaatucd.wixsite.com/ucdvsa"
+          },
+          {
+            "name": "UOP VSA",
+            "school": "University of the Pacific (Stockton)",
+            "instagram": "uopvsa",
+            "url": "https://uopvsa.wixsite.com/norcaluvsa"
           },
           {
             "name": "NorCal UVSA",
