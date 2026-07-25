@@ -246,10 +246,11 @@ body.is-past-hero .site-header {
   margin: 0 0 0.75rem;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.75rem, 9vw, 4.75rem);
-  line-height: 0.95;
-  letter-spacing: -0.045em;
+  font-size: clamp(2.25rem, 7.5vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
   color: var(--ink);
+  max-width: 14ch;
 }
 
 .hero-line {

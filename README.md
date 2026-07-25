@@ -1,9 +1,9 @@
-# Viet Youth Resource Guide — public site
+# Viet Youth Resources — public site
 
 Live: [https://youth.cpalss.com](https://youth.cpalss.com)  
 Repo: [cPALSs/youth](https://github.com/cPALSs/youth)
 
-Static GitHub Pages guide for Greater Sacramento Vietnamese **high school and college** youth — peer VSA Instagram map plus opportunities from cPALSs and NorCal UVSA.
+Static GitHub Pages site for Greater Sacramento Vietnamese **high school and college** youth — peer VSA Instagram map plus opportunities from cPALSs and NorCal UVSA (Summit, Camp Horizon, SPARKS).
 
 ## Edit / preview / publish
 

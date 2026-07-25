@@ -1,6 +1,6 @@
 {
-  "brand": "Viet Youth",
-  "title": "Viet Youth Resource Guide",
+  "brand": "Viet Youth Resources",
+  "title": "Viet Youth Resources",
   "tagline": "Greater Sacramento — high school and college",
   "email": "contact@cpalss.com",
   "canonical": "https://youth.cpalss.com/",
@@ -96,7 +96,7 @@
           },
           {
             "name": "VISTA @ UCD",
-            "note": "UC Davis VSA high school outreach program",
+            "note": "UC Davis VSA high school outreach — college students mentoring / bridging HS clubs",
             "instagram": "vista.vsaatucd"
           }
         ]
@@ -211,16 +211,25 @@
               { "kind": "Attend", "text": "Camp registration when posted — norcaluvsa.org / @norcaluvsa" },
               { "kind": "Enroll", "text": "Chapter and individual paths via UVSA — watch IG and the union site" }
             ]
+          },
+          {
+            "id": "sparks",
+            "name": "SPARKS",
+            "when": "One-day High School Summit — typically May (also ran Nov 2025); dates on norcaluvsa.org",
+            "bands": ["hs"],
+            "about": "NorCal UVSA's high school college/career bridge — workshops and networking with college students. Not a high school federation; a day to meet the collegiate field.",
+            "url": "https://norcaluvsa.org",
+            "urlLabel": "norcaluvsa.org",
+            "plugIn": [
+              { "kind": "Attend", "text": "Register when SPARKS opens — norcaluvsa.org / @norcaluvsa" },
+              { "kind": "Enroll", "text": "Bring your HS club — watch UVSA IG for announcements" }
+            ]
           }
         ],
         "also": [
           {
             "name": "UVSA Olympics",
             "text": "Inter-chapter competition (typically February)."
-          },
-          {
-            "name": "SPARKS",
-            "text": "One-day high school college/career bridge — UVSA's HS-facing product (not a high school federation)."
           }
         ]
       }

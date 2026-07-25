@@ -261,7 +261,7 @@
   async function main() {
     initNav();
     const site = await loadJson("data/site.json");
-    document.title = `${site.title} — Greater Sacramento`;
+    document.title = `${site.brand || site.title} — Greater Sacramento`;
     renderHero(site);
     renderIntro(site);
     renderPeers(site);
