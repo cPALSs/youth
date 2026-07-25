@@ -826,6 +826,10 @@ body.is-past-hero .site-header {
   border-radius: 0.4rem;
 }
 
+.toc-fab-slot:empty {
+  display: none;
+}
+
 .band-fab {
   position: fixed;
   z-index: 40;
@@ -907,6 +911,31 @@ body.is-past-hero .site-header {
   outline: 2px solid var(--citrus);
   outline-offset: -2px;
   z-index: 1;
+}
+
+@media (min-width: 1100px) {
+  .band-fab.is-docked {
+    position: static;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    margin-top: 1.35rem;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .band-fab.is-docked.is-visible {
+    transform: none;
+  }
+
+  .band-fab.is-docked .band-fab-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 0.7rem 0.45rem;
+    font-size: 0.72rem;
+    text-align: center;
+  }
 }
 
 #events-list .activity-card[hidden],

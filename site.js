@@ -337,30 +337,58 @@
       links.map((a) => [a.getAttribute("data-toc-target"), a])
     );
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (!visible.length) return;
-        const id = visible[0].target.id;
-        links.forEach((a) => a.classList.remove("is-active"));
-        if (byId[id]) byId[id].classList.add("is-active");
-      },
-      { rootMargin: "-20% 0px -55% 0px", threshold: [0.1, 0.4, 0.7] }
-    );
-    sections.forEach((s) => io.observe(s));
+    function updateActive() {
+      // Prefer the section that currently owns a line near the top of the viewport.
+      // (Tall sections like Events never fully fit, so intersection-ratio spies skip them.)
+      const marker = Math.min(140, Math.round(window.innerHeight * 0.2));
+      let activeId = sections[0].id;
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= marker && rect.bottom > marker) {
+          activeId = section.id;
+          break;
+        }
+        if (rect.top <= marker) {
+          activeId = section.id;
+        }
+      }
+      links.forEach((a) => a.classList.remove("is-active"));
+      if (byId[activeId]) byId[activeId].classList.add("is-active");
+    }
+
+    let raf = 0;
+    function onScroll() {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        updateActive();
+      });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    window.addEventListener("scrollend", updateActive, { passive: true });
+    links.forEach((a) => {
+      a.addEventListener("click", () => {
+        requestAnimationFrame(() => requestAnimationFrame(updateActive));
+        window.setTimeout(updateActive, 400);
+      });
+    });
+    updateActive();
   }
 
   function initBandFab() {
     const fab = document.getElementById("band-fab");
-    if (!fab) return;
+    const slot = document.getElementById("toc-fab-slot");
+    const home = fab && fab.parentElement;
+    if (!fab || !slot || !home) return;
 
     let activeBand = null;
     const buttons = [...fab.querySelectorAll("[data-band]")];
     const filterRoots = ["#events-list", "#resources-list"]
       .map((sel) => document.querySelector(sel))
       .filter(Boolean);
+    const wideMq = window.matchMedia("(min-width: 1100px)");
 
     function applyFilter() {
       buttons.forEach((btn) => {
@@ -374,7 +402,9 @@
             card.hidden = false;
             return;
           }
-          const bands = (card.getAttribute("data-bands") || "").split(/\s+/).filter(Boolean);
+          const bands = (card.getAttribute("data-bands") || "")
+            .split(/\s+/)
+            .filter(Boolean);
           card.hidden = !bands.includes(activeBand);
         });
       });
@@ -387,6 +417,16 @@
         applyFilter();
       });
     });
+
+    function placeFab() {
+      if (wideMq.matches) {
+        slot.appendChild(fab);
+        fab.classList.add("is-docked");
+      } else {
+        home.appendChild(fab);
+        fab.classList.remove("is-docked");
+      }
+    }
 
     const sectionIds = ["events", "resources"];
     const inView = Object.fromEntries(sectionIds.map((id) => [id, false]));
@@ -405,13 +445,19 @@
         });
         syncFabVisibility();
       },
-      { rootMargin: "-12% 0px -12% 0px", threshold: [0, 0.08, 0.2] }
+      { rootMargin: "0px 0px 0px 0px", threshold: [0, 0.01, 0.1] }
     );
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) io.observe(el);
     });
 
+    if (typeof wideMq.addEventListener === "function") {
+      wideMq.addEventListener("change", placeFab);
+    } else {
+      wideMq.addListener(placeFab);
+    }
+    placeFab();
     applyFilter();
   }
 
