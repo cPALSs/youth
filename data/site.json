@@ -316,25 +316,6 @@
             "detail": "Guest-perform if they invite other schools — ask your officers to reach out"
           }
         ]
-      },
-      {
-        "id": "vision",
-        "name": "VISION @ UC Berkeley",
-        "org": "Cal VSA",
-        "orgUrl": "https://vsa.studentorg.berkeley.edu/",
-        "date": "2027-04-15",
-        "dateEnd": "2027-04-18",
-        "when": "Usually mid-April (4 days / 3 nights on the Berkeley campus)",
-        "bands": ["hs"],
-        "about": "All-expense-paid high school leadership and identity intensive run by Cal VSA. Open to grades 9–12 (not Vietnamese-only). Berkeley is about 1½ hours from Greater Sacramento — doable if a parent can handle the trip when apps open.",
-        "url": "https://vsa.studentorg.berkeley.edu/vision/",
-        "urlLabel": "vsa.studentorg.berkeley.edu/vision",
-        "actions": [
-          {
-            "type": "attend",
-            "detail": "Follow Cal VSA / [VISION](https://vsa.studentorg.berkeley.edu/vision/) for the application window"
-          }
-        ]
       }
     ]
   },
