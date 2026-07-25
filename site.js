@@ -221,19 +221,24 @@
     const root = document.getElementById("who-bands");
     root.innerHTML = ch.bands
       .map((band) => {
-        const rows = band.orgs
+        const cards = band.orgs
           .map((org) => {
-            const ig = org.instagram
-              ? `<a href="${igUrl(org.instagram)}" rel="noopener noreferrer">${igLabel(org.instagram)}</a>`
-              : "—";
-            const siteLink = org.url
-              ? ` · <a href="${escapeHtml(org.url)}" rel="noopener noreferrer">Website</a>`
-              : "";
-            return `<tr>
-              <td><strong>${escapeHtml(org.name)}</strong></td>
-              <td>${escapeHtml(org.school || "")}</td>
-              <td>${ig}${siteLink}</td>
-            </tr>`;
+            const links = [];
+            if (org.instagram) {
+              links.push(
+                `<a href="${igUrl(org.instagram)}" rel="noopener noreferrer">${igLabel(org.instagram)}</a>`
+              );
+            }
+            if (org.url) {
+              links.push(
+                `<a href="${escapeHtml(org.url)}" rel="noopener noreferrer">Website</a>`
+              );
+            }
+            return `<article class="peer-card">
+              <h4 class="peer-card-name">${escapeHtml(org.name)}</h4>
+              ${org.school ? `<p class="peer-card-school">${escapeHtml(org.school)}</p>` : ""}
+              ${links.length ? `<p class="peer-card-links">${links.join('<span class="peer-card-sep" aria-hidden="true"> · </span>')}</p>` : ""}
+            </article>`;
           })
           .join("");
 
@@ -257,14 +262,7 @@
         return `<div class="band-block" id="who-${escapeHtml(band.id)}">
           <h3 class="band-heading">${escapeHtml(band.label)}</h3>
           ${band.note ? `<p class="band-note">${escapeHtml(band.note)}</p>` : ""}
-          <div class="table-wrap">
-            <table class="peer-table">
-              <thead>
-                <tr><th>Club</th><th>School</th><th>Instagram</th></tr>
-              </thead>
-              <tbody>${rows}</tbody>
-            </table>
-          </div>
+          <div class="peer-cards">${cards}</div>
           ${adjacent}
         </div>`;
       })

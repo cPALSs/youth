@@ -588,6 +588,52 @@ body.is-past-hero .site-header {
   background: var(--panel);
 }
 
+.peer-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.peer-card {
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--panel);
+}
+
+.peer-card-name {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.peer-card-school {
+  margin: 0 0 0.45rem;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.peer-card-links {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.peer-card-sep {
+  color: var(--ink-faint);
+}
+
+@media (min-width: 720px) {
+  .peer-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16.5rem, 1fr));
+    gap: 0.75rem;
+  }
+}
+
 .peer-table {
   width: 100%;
   border-collapse: collapse;
