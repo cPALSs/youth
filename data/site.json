@@ -42,6 +42,7 @@
         "note": "Campus clubs nearby (Sac / Davis / Stockton) — plus NorCal UVSA (regional college VSA union)",
         "orgs": [
           { "name": "Sac State VSA", "school": "California State University, Sacramento", "instagram": "sacstate.vsa" },
+          { "name": "CRC VSA", "school": "Cosumnes River College", "instagram": "vsa.crc.26" },
           {
             "name": "UC Davis VSA",
             "school": "University of California, Davis",
