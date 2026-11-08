@@ -132,7 +132,7 @@
         "org": "cPALSs",
         "orgUrl": "https://www.cpalss.com",
         "date": "2026-12-06",
-        "when": "Sun Dec 6, 2026 · 3:30–7:30 PM (date may shift) · District 56 · 10th year",
+        "when": "Sun Dec 6, 2026 · 3:30–7:30 PM (tentative) · District 56 · 10th year",
         "bands": ["hs", "college"],
         "about": "A free night for families — Santa, dinner, crafts, and shows. Unwrapped toys go to kids who need them.",
         "url": "https://elkgrovetoydrive.com",
@@ -198,19 +198,20 @@
       },
       {
         "id": "summit",
-        "name": "NorCal UVSA Summit",
+        "name": "NorCal UVSA Summit XVIII",
         "org": "NorCal UVSA",
         "orgUrl": "https://norcaluvsa.org",
-        "date": "2026-11-15",
-        "when": "Usually November (3 days / 2 nights on a member campus)",
+        "date": "2026-11-20",
+        "dateEnd": "2026-11-22",
+        "when": "Fri–Sun Nov 20–22, 2026 · UC Santa Cruz · Where the Current Meets the Earth",
         "bands": ["college"],
-        "about": "A weekend leadership conference for college VSAs — workshops, bonding, and service. Member schools take turns hosting.",
-        "url": "https://norcaluvsa.org/summit",
-        "urlLabel": "norcaluvsa.org/summit",
+        "about": "A weekend leadership conference for college VSAs — workshops, bonding, and service. Member schools take turns hosting; this year is at UC Santa Cruz.",
+        "url": "https://norcaluvsa.org/summit-xviii",
+        "urlLabel": "norcaluvsa.org/summit-xviii",
         "actions": [
           {
             "type": "attend",
-            "detail": "Register when signup opens — norcaluvsa.org/summit or ask your VSA board"
+            "detail": "Register at norcaluvsa.org/summit-xviii or ask your VSA board"
           }
         ]
       },
